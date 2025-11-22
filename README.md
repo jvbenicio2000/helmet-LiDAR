@@ -12,3 +12,14 @@ A ideia é fazer um capacete que consiga, através de um sensor ultrassônico qu
 - **Electronics:** Contém os esquemas elétricos, layout da placa de circuito impresso (PCI) e outras informações relacionadas à eletrônica do projeto.
 - **Coding:** Contém o código-fonte para o microcontrolador (por exemplo, Arduino ou ESP32) que controla o sensor, os motores e a lógica do sistema.
 - **Bill-of-Materials:** Contém a lista de todos os componentes eletrônicos e materiais necessários para a construção do projeto.
+
+## Autores
+
+- João Victor Benício
+- Vinicius Macedo Escudeiro
+- Bruno Xia
+- Raul Perez Silva
+
+### Instituição
+
+Instituto Mauá de Tecnologia
