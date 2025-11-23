@@ -32,3 +32,11 @@ A tabela abaixo detalha as conexões entre o Raspberry Pi Pico e os demais compo
 | GP21 | TMC2209 | Sinal de `EN` (Enable) para o driver do motor. |
 
 **Observação Importante:** O mapeamento de pinos neste esquema elétrico **difere** do que está definido no arquivo `Coding/main.c`. Será necessário ajustar o código-fonte para refletir as conexões do hardware final ou vice-versa. O esquema representa a documentação de hardware mais recente.
+
+
+## Projeto Proteus (`Proteus/`)
+
+A subpasta `Proteus/` contém os arquivos de design do circuito e da PCB (Placa de Circuito Impresso) desenvolvidos no software Proteus.
+
+- **`PCBProjeto.pdsprj`**: Este é o arquivo principal do projeto Proteus, que inclui tanto o diagrama esquemático quanto o layout da PCB.
+- **`*.workspace`**: Arquivo de configuração do ambiente de trabalho (workspace) do Proteus, que salva as configurações da sua sessão de trabalho, como janelas abertas e zoom.
