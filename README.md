@@ -28,3 +28,10 @@ Instituto Mauá de Tecnologia
 
 - Instrumentação
 - Microcontroladores
+
+
+## Relatório do Projeto
+
+Para uma documentação completa, incluindo a fundamentação teórica, detalhes de implementação, testes e resultados, consulte o relatório principal do projeto:
+
+**[Relatório Completo (PDF)](./relatorio_projeto.pdf)**
