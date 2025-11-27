@@ -46,3 +46,34 @@ Este é o programa principal que orquestra todo o funcionamento do capacete. A l
 ### Compilação
 
 Para compilar este projeto, é necessário ter o ambiente de desenvolvimento para o Raspberry Pi Pico configurado. Siga o guia oficial "Getting started with Raspberry Pi Pico" para mais detalhes.
+
+
+## `gps_bluetooth.py`
+
+- **Microcontrolador Alvo:** Raspberry Pi Pico W
+- **Linguagem:** MicroPython
+
+### Descrição
+
+Este script é responsável por uma funcionalidade secundária do projeto: **rastreamento por GPS e comunicação via Bluetooth**.
+
+1.  **Leitura do GPS:** O código utiliza uma comunicação serial (UART) para ler os dados brutos (sentenças NMEA) de um módulo GPS NEO-6M.
+
+2.  **Parsing de Dados:** Ele processa especificamente as sentenças `$GPRMC` ou `$GNRMC`, que contêm as informações essenciais de geolocalização (latitude e longitude).
+
+3.  **Conversão de Coordenadas:** Converte o formato de coordenadas NMEA para o formato de graus decimais, que é mais comum e fácil de usar em mapas.
+
+4.  **Transmissão Bluetooth:** As coordenadas de latitude e longitude formatadas são então enviadas via Bluetooth (usando um módulo HC-05) para um dispositivo pareado, como um smartphone. Isso permite o monitoramento remoto da localização do usuário.
+
+### Pinos Utilizados (Raspberry Pi Pico)
+
+| Função | Pino (GPIO) do Pico | Módulo |
+|---|---|---|
+| **GPS (UART 1)** | |
+| TX | 4 | RX do NEO-6M |
+| RX | 5 | TX do NEO-6M |
+| **Bluetooth (UART 0)** | |
+| TX | 0 | RX do HC-05 |
+| RX | 1 | TX do HC-05 |
+
+**Nota:** Este script opera de forma independente do `main.c` e requer uma segunda Raspberry Pi Pico, conforme especificado na lista de materiais.

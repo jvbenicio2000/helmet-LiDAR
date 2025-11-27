@@ -35,3 +35,8 @@ Instituto Mauá de Tecnologia
 Para uma documentação completa, incluindo a fundamentação teórica, detalhes de implementação, testes e resultados, consulte o relatório principal do projeto:
 
 **[Relatório Completo (PDF)](./relatorio_projeto.pdf)**
+
+
+## Funcionalidade Adicional: Rastreamento GPS
+
+Além do sistema de detecção de obstáculos, o projeto inclui uma funcionalidade secundária de **rastreamento por GPS**. Utilizando uma segunda Raspberry Pi Pico, o sistema lê as coordenadas de um módulo GPS NEO-6M e as transmite via Bluetooth para um dispositivo pareado, permitindo o monitoramento remoto da localização do usuário.
