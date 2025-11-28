@@ -161,3 +161,47 @@ Esta é uma **versão avançada** do script de GPS, que adiciona a funcionalidad
 
 -   **Personalize os Waypoints:** Edite a lista `WAYPOINTS` no código para adicionar os locais de interesse para o usuário.
 -   **Ação Personalizada:** No laço principal, há um local marcado (`>>> AQUI você pode colocar a reação do sistema <<<`) onde você pode adicionar uma ação específica quando um waypoint é alcançado (ex: acender um LED, tocar um som, etc.).
+
+
+## `CMakeLists.txt` (Arquivo de Build)
+
+- **Ambiente:** Raspberry Pi Pico SDK (C/C++)
+
+### Descrição
+
+Este arquivo é um **script de build** para o sistema CMake, que automatiza o processo de compilação de todos os códigos-fonte em C (`.c`) do projeto para o Raspberry Pi Pico.
+
+### Funcionalidades
+
+1.  **Múltiplos Executáveis:** Ele está configurado para compilar **três executáveis independentes** a partir dos seus respectivos arquivos-fonte:
+    -   `main` (a partir de `main.c`)
+    -   `main_enhanced` (a partir de `main_enhanced.c`)
+    -   `gps_bluetooth` (a partir de `gps_bluetooth.c`)
+
+2.  **Gerenciamento de Bibliotecas:** Para cada executável, ele automaticamente vincula (linka) as bibliotecas necessárias do Pico SDK, como `pico_stdlib`, `hardware_pwm`, `hardware_uart`, etc.
+
+3.  **Saída de Depuração:** Habilita a saída de `printf` via USB para todos os executáveis, facilitando a depuração.
+
+4.  **Geração de Arquivos:** Automatiza a criação de todos os formatos de arquivo necessários para gravar no Pico, incluindo:
+    -   `.uf2` (para arrastar e soltar na unidade do Pico)
+    -   `.bin`
+    -   `.hex`
+
+### Como Usar
+
+1.  **Configure o Ambiente:** Certifique-se de ter o [Raspberry Pi Pico SDK](https://github.com/raspberrypi/pico-sdk) e as ferramentas de compilação (CMake, GCC ARM) instalados.
+
+2.  **Crie a Pasta de Build:** Dentro da pasta `Coding/`, crie uma subpasta chamada `build`:
+    ```bash
+    cd Coding
+    mkdir build
+    cd build
+    ```
+
+3.  **Execute o CMake e o Make:**
+    ```bash
+    cmake ..
+    make
+    ```
+
+4.  **Grave no Pico:** Após a compilação, a pasta `build/` conterá os arquivos `.uf2` para cada um dos três executáveis. Basta arrastar o arquivo `.uf2` desejado para a unidade do Pico (que aparece ao conectar o Pico com o botão BOOTSEL pressionado).
