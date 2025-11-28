@@ -34,7 +34,7 @@ Instituto Mauá de Tecnologia
 
 Para uma documentação completa, incluindo a fundamentação teórica, detalhes de implementação, testes e resultados, consulte o relatório principal do projeto:
 
-**[Relatório Completo (PDF)](./relatorio_projeto.pdf)**
+*(O relatório em PDF foi removido para atualização. Um novo será adicionado em breve.)*
 
 
 ## Funcionalidade Adicional: Rastreamento GPS
