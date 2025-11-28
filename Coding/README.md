@@ -130,3 +130,34 @@ Esta é uma **versão aprimorada** do código `main.c`, com foco em melhorar a p
 2.  **Código Mais Robusto:** A lógica de ordenação (bubble sort) garante que os valores mínimo e máximo sejam sempre descartados corretamente.
 
 O restante da lógica (controle do motor de passo, PWM, etc.) permanece o mesmo, mas agora opera com dados de distância de maior qualidade.
+
+
+## `gps_geofencing.py` (Versão Aprimorada com Geofencing)
+
+- **Microcontrolador Alvo:** Raspberry Pi Pico W
+- **Linguagem:** MicroPython
+
+### Descrição
+
+Esta é uma **versão avançada** do script de GPS, que adiciona a funcionalidade de **geofencing** (cercas virtuais) para reconhecer pontos de interesse pré-definidos.
+
+### Melhorias e Funcionalidades
+
+1.  **Filtro de Média Móvel (`get_filtered_position()`):**
+    -   Assim como no `main_enhanced.c`, este código coleta múltiplas amostras de GPS para calcular uma posição média, resultando em uma localização muito mais estável e precisa.
+
+2.  **Cálculo de Distância Haversine (`distance_m()`):**
+    -   Implementa a fórmula de Haversine para calcular com precisão a distância em metros entre duas coordenadas geográficas, levando em conta a curvatura da Terra.
+
+3.  **Geofencing com Waypoints (`check_location()`):**
+    -   Você pode definir uma lista de **pontos de interesse** (waypoints) com nome, latitude, longitude e um raio em metros.
+    -   O código verifica continuamente se a posição atual do usuário está dentro do raio de algum desses waypoints.
+
+4.  **Notificações de Chegada (`main()`):**
+    -   Quando o usuário entra na área de um waypoint, o sistema envia uma notificação via Bluetooth (ex: "Você chegou perto de: Casa").
+    -   Ele evita notificações repetidas, enviando o aviso apenas uma vez ao entrar na área.
+
+### Uso
+
+-   **Personalize os Waypoints:** Edite a lista `WAYPOINTS` no código para adicionar os locais de interesse para o usuário.
+-   **Ação Personalizada:** No laço principal, há um local marcado (`>>> AQUI você pode colocar a reação do sistema <<<`) onde você pode adicionar uma ação específica quando um waypoint é alcançado (ex: acender um LED, tocar um som, etc.).
