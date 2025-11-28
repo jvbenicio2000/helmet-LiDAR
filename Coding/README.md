@@ -108,3 +108,25 @@ O mapeamento de pinos é o mesmo da versão em Python:
 ### Compilação
 
 Para compilar este código, é necessário ter o ambiente de desenvolvimento para o Raspberry Pi Pico SDK configurado. O código deve ser compilado junto com os arquivos de build do SDK (CMakeLists.txt, etc.).
+
+
+## `main_enhanced.c` (Versão Aprimorada)
+
+- **Microcontrolador Alvo:** Raspberry Pi Pico
+- **Linguagem:** C
+
+### Descrição
+
+Esta é uma **versão aprimorada** do código `main.c`, com foco em melhorar a precisão e a estabilidade das medições do sensor ultrassônico.
+
+### Melhorias Implementadas
+
+1.  **Filtro de Média Móvel (`read_distance_filtered()`):**
+    -   **Problema Resolvido:** Sensores ultrassônicos podem sofrer com leituras espúrias (picos de ruído) que geram dados incorretos e instáveis.
+    -   **Solução:** Em vez de usar uma única leitura, esta função coleta **5 amostras** de distância em rápida sucessão.
+    -   Ela então **descarta a menor e a maior** leitura (que são as mais prováveis de serem ruído) e calcula a **média das 3 leituras restantes**.
+    -   **Resultado:** A distância retornada é muito mais estável e confiável, reduzindo falsos positivos e tornando a resposta do sistema de vibração mais consistente.
+
+2.  **Código Mais Robusto:** A lógica de ordenação (bubble sort) garante que os valores mínimo e máximo sejam sempre descartados corretamente.
+
+O restante da lógica (controle do motor de passo, PWM, etc.) permanece o mesmo, mas agora opera com dados de distância de maior qualidade.
