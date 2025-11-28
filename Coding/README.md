@@ -77,3 +77,34 @@ Este script é responsável por uma funcionalidade secundária do projeto: **ras
 | RX | 1 | TX do HC-05 |
 
 **Nota:** Este script opera de forma independente do `main.c` e requer uma segunda Raspberry Pi Pico, conforme especificado na lista de materiais.
+
+## `gps_bluetooth.c` (Versão em C)
+
+- **Microcontrolador Alvo:** Raspberry Pi Pico
+- **Linguagem:** C (com Raspberry Pi Pico SDK)
+
+### Descrição
+
+Esta é a **versão em C** da funcionalidade de rastreamento GPS, convertida a partir do script MicroPython. As funcionalidades são idênticas:
+
+1.  **Leitura do GPS:** Utiliza a UART1 para ler dados NMEA do módulo GPS NEO-6M.
+2.  **Parsing de Dados:** Processa as sentenças `$GPRMC` ou `$GNRMC` para extrair status, latitude e longitude.
+3.  **Conversão de Coordenadas:** Converte as coordenadas NMEA para o formato de graus decimais.
+4.  **Transmissão Bluetooth:** Envia as coordenadas formatadas via UART0 para um módulo Bluetooth HC-05.
+
+### Pinos Utilizados (Raspberry Pi Pico)
+
+O mapeamento de pinos é o mesmo da versão em Python:
+
+| Função | Pino (GPIO) do Pico | Módulo |
+|---|---|---|
+| **GPS (UART 1)** | |
+| TX | 4 | RX do NEO-6M |
+| RX | 5 | TX do NEO-6M |
+| **Bluetooth (UART 0)** | |
+| TX | 0 | RX do HC-05 |
+| RX | 1 | TX do HC-05 |
+
+### Compilação
+
+Para compilar este código, é necessário ter o ambiente de desenvolvimento para o Raspberry Pi Pico SDK configurado. O código deve ser compilado junto com os arquivos de build do SDK (CMakeLists.txt, etc.).
